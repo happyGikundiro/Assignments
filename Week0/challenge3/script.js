@@ -14,28 +14,39 @@
 // tall.
 // GOOD LUCK 😀
 
-const MarkInfo = {
-    fullName: 'Mark Miller',
-    mass: 78,
-    height: 1.69,
-    calcBMI: function(){
-        const BMI = this.mass / this.height ** 2;
-        return BMI;
-    }
+function calculateBMI() {
+  const BMI = this.mass / this.height ** 2;
+  return BMI;
 }
+
+const MarkInfo = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: calculateBMI,
+  // calcBMI: function(){
+  //     const BMI = this.mass / this.height ** 2;
+  //     return BMI;
+  // }
+};
 
 const JohnInfo = {
-    fullName: 'John Smith',
-    mass: 92,
-    height: 1.95,
-    calcBMI: function(){
-        const BMI = this.mass / this.height ** 2;
-        return BMI;
-    }
-}
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: calculateBMI,
+};
 
-if(MarkInfo.calcBMI() > JohnInfo.calcBMI()){
-    console.log(`${MarkInfo.fullName}'s BMI ( ${MarkInfo.calcBMI()}) is higher than ${JohnInfo.fullName}'s (${JohnInfo.calcBMI()})!`);
-}else if(MarkInfo.calcBMI() < JohnInfo.calcBMI()){
-    console.log(`${JohnInfo.fullName}'s BMI( ${JohnInfo.calcBMI()}) is higher than ${MarkInfo.fullName}'s (${MarkInfo.calcBMI()})!`);
+if (MarkInfo.calcBMI() > JohnInfo.calcBMI()) {
+  console.log(
+    `${MarkInfo.fullName}'s BMI ( ${MarkInfo.calcBMI()}) is higher than ${
+      JohnInfo.fullName
+    }'s (${JohnInfo.calcBMI()})!`
+  );
+} else if (MarkInfo.calcBMI() < JohnInfo.calcBMI()) {
+  console.log(
+    `${JohnInfo.fullName}'s BMI( ${JohnInfo.calcBMI()}) is higher than ${
+      MarkInfo.fullName
+    }'s (${MarkInfo.calcBMI()})!`
+  );
 }
