@@ -36,3 +36,38 @@ function CreateTodo() {
 }
 
 CreateTodo();
+
+// Function to create new to-do list item elements from the data
+function DisplayTodos() {
+  ul.innerHTML = "";
+  itemlists.forEach((todo) => {
+    // creating li element
+    const li = document.createElement("li");
+    li.classList.add("sub-list");
+    li.innerHTML = `
+                  <div class="left-content">
+          ${
+            todo.completed
+              ? `<i class="fa-solid fa-circle-check" style="color: cadetblue; font-size: 20px;" onclick="Handlecomplete(${todo.id})"></i>`
+              : `<i class="fa-regular fa-circle" style="color: cadetblue; font-size: 20px;" onclick="Handlecomplete(${todo.id})"></i>`
+          }
+          <div>
+            <h4 class="todo-title">${todo.title}</h4>
+            <p class="todo-description">${todo.description}</p>
+            <p class="todo-date">Due: ${new Date(
+              todo.dateTime
+            ).toLocaleString()}</p>
+          </div>
+        </div>
+                  <div class="right-content">
+                      <i class="fa-solid fa-trash" style="color: #e70000; font-size: 20px" onclick="DeleteTodo(${
+                        todo.id
+                      })"></i>
+                      <i class="fa-solid fa-pen" style="color: cadetblue; font-size: 20px" onclick="EditTodo(${
+                        todo.id
+                      })"></i>
+                  </div>
+      `;
+    ul.appendChild(li);
+  });
+}
