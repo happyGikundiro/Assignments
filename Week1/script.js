@@ -71,3 +71,28 @@ function DisplayTodos() {
     ul.appendChild(li);
   });
 }
+
+// function of clearing input values
+function clearForm() {
+  titleEl.value = "";
+  descriptionEl.value = "";
+  datetimeEl.value = "";
+}
+
+// function of deleting one element in the list of todos
+function DeleteTodo(id) {
+  itemlists = itemlists.filter((todo) => todo.id != id);
+  DisplayTodos();
+  alert("Todo deleted");
+}
+
+// function of editing one element in the list of todos
+function EditTodo(id) {
+  const editvalue = itemlists.find((todo) => todo.id === id);
+  if (editvalue) {
+    titleEl.value = editvalue.title;
+    descriptionEl.value = editvalue.description;
+    datetimeEl.value = editvalue.dateTime;
+    addbtn.innerHTML = "EDIT";
+  }
+}
