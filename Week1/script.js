@@ -96,3 +96,12 @@ function EditTodo(id) {
     addbtn.innerHTML = "EDIT";
   }
 }
+
+// function of changing completion state one element in the list of todos
+function Handlecomplete(id) {
+  const todo = itemlists.find((todo) => todo.id === id);
+  if (todo) {
+    todo.completed = !todo.completed;
+    DisplayTodos();
+  }
+}
