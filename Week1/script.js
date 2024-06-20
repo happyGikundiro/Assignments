@@ -4,6 +4,7 @@ const ul = document.querySelector(".lists");
 const titleEl = document.querySelector("#title");
 const descriptionEl = document.querySelector("#description");
 const datetimeEl = document.querySelector("#datetime");
+const orderSelector = document.querySelector(".order-selector");
 
 let itemlists = [];
 
@@ -20,7 +21,7 @@ function CreateTodo() {
       return;
     }
 
-    const todo = {
+    let todo = {
       id: Date.now(),
       title,
       description,
@@ -86,22 +87,55 @@ function DeleteTodo(id) {
   alert("Todo deleted");
 }
 
-// function of editing one element in the list of todos
-function EditTodo(id) {
-  const editvalue = itemlists.find((todo) => todo.id === id);
-  if (editvalue) {
-    titleEl.value = editvalue.title;
-    descriptionEl.value = editvalue.description;
-    datetimeEl.value = editvalue.dateTime;
-    addbtn.innerHTML = "EDIT";
-  }
-}
-
 // function of changing completion state one element in the list of todos
 function Handlecomplete(id) {
   const todo = itemlists.find((todo) => todo.id === id);
   if (todo) {
     todo.completed = !todo.completed;
     DisplayTodos();
+  }
+}
+
+// function to Sort the list based on the due date/time.
+function sortTodo() {
+  orderSelector.addEventListener("change", function () {
+    const selectedOrder = orderSelector.value;
+    itemlists.sort((a, b) => {
+      if (selectedOrder === "asc") {
+        return new Date(a.dateTime) - new Date(b.dateTime);
+      } else {
+        return new Date(b.dateTime) - new Date(a.dateTime);
+      }
+    });
+    DisplayTodos();
+  });
+}
+
+sortTodo();
+
+function EditTodo(id) {
+  const index = itemlists.findIndex((todo) => todo.id === id);
+  if (index !== -1) {
+    const editvalue = itemlists[index];
+    console.log(editvalue);
+    titleEl.value = editvalue.title;
+    descriptionEl.value = editvalue.description;
+    datetimeEl.value = editvalue.dateTime;
+    addbtn.innerHTML = "EDIT";
+
+    addbtn.removeEventListener("click", CreateTodo);
+    addbtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      itemlists[index].title = titleEl.value;
+      itemlists[index].description = descriptionEl.value;
+      itemlists[index].dateTime = datetimeEl.value;
+
+      clearForm();
+      addbtn.innerHTML = "ADD";
+      addbtn.removeEventListener("click", EditTodo);
+      DisplayTodos();
+      addbtn.addEventListener("click", CreateTodo);
+    });
   }
 }

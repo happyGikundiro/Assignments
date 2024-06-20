@@ -68,3 +68,12 @@
     gap: 20px;
     cursor: pointer;
 }
+.order {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .order-selector {
+    width: 20%;
+    outline: none;
+  }
