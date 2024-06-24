@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<title>Superhero Battle Simulator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js"></script>
+<div class="container">
+  <h1>Superhero Battle Simulator</h1>
+  <div class="selection">
+
+    <label for="heroSelect">Choose a Hero:</label>
+    <select id="heroSelect">
+      <option value="ironman">Iron Man</option>
+      <option value="spiderman">Spider-Man</option>
+    </select>
+
+    <label for="villainSelect">Choose a Villain:</label>
+    <select id="villainSelect">
+      <option value="joker">Joker</option>
+      <option value="cartoon">Cartoon</option>
+    </select>
+
+  </div>
+
+  <div class="btn-container">
+  <button id="battleButton">Start Battle</button>
+</div>
+  <div id="result"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

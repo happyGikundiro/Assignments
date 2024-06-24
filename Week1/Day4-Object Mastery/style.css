@@ -1,0 +1,71 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+    align-items: center;
+    font-family: 'poppins',sans-serif;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: teal;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .selection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  #villainSelect, #heroSelect{
+    font-size: 12px;
+    outline: none;
+  }
+  
+  select {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .btn-container{
+    display: flex;
+    justify-content: end;
+  }
+  
+  button {
+    width: 20%;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: teal;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    background-color: cadetblue;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-size: 17px;
+    text-align: center;
+  }
+  

@@ -32,7 +32,6 @@ Superhero.prototype.usePower = function () {
 Superhero.prototype.revealIdentity = function () {
   console.log(`Hero ${this.name} secret identity is ${this.secretIdentity}`);
 };
-// console.log("res:", sample.usePower());
 
 // 4. Prototypal Inheritance:
 function Supervillain(name, secretIdentity, powers, weakness) {
@@ -44,7 +43,7 @@ const sample = new Supervillain("Lion", "unknown", ["Killer", "giant"], "none");
 sample.revealIdentity();
 
 // 5. Object Iteration and Transformation:
-// Task 5: Manipulate an array of superheroes and supervillains
+
 let heroes = [
   new Superhero("Lion", "unknown", ["Killer", "giant"], "none"),
   new Superhero(
@@ -70,3 +69,61 @@ let superheroes = heroes.filter((character) =>
   character.powers.includes("coding")
 );
 console.log(superheroes);
+
+// 6. Advanced Challenge
+
+const players = {
+  heroes: {
+    ironman: new Superhero(
+      "Iron Man",
+      "Tony Stark",
+      ["intelligence", "technology"],
+      "Honesty"
+    ),
+    spiderman: new Superhero(
+      "Spider-Man",
+      "Peter Parker",
+      ["agility", "spider-sense"],
+      "responsibility"
+    ),
+  },
+  villains: {
+    joker: new Supervillain(
+      "Joker",
+      "Unknown",
+      ["strength", "debugging"],
+      "arrogance"
+    ),
+    cartoon: new Supervillain("Cartoon", "Giant", ["magic", "Truth"], "pride"),
+  },
+};
+
+function battle(hero1, hero2) {
+  let hero1Power =
+    hero1.powers[Math.floor(Math.random() * hero1.powers.length)];
+  let hero2Power =
+    hero2.powers[Math.floor(Math.random() * hero2.powers.length)];
+
+  console.log(`${hero1.name} uses ${hero1Power}!`);
+  console.log(`${hero2.name} uses ${hero2Power}!`);
+
+  let winner;
+  if (Math.random() > 0.5) {
+    winner = hero1.name;
+  } else {
+    winner = hero2.name;
+  }
+
+  return `${winner} wins the battle!`;
+}
+
+document.getElementById("battleButton").addEventListener("click", function () {
+  const heroSelect = document.getElementById("heroSelect").value;
+  const villainSelect = document.getElementById("villainSelect").value;
+
+  const hero = players.heroes[heroSelect];
+  const villain = players.villains[villainSelect];
+
+  const result = battle(villain, hero);
+  document.getElementById("result").textContent = result;
+});
